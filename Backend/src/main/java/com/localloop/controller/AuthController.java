@@ -62,4 +62,8 @@ public ResponseEntity<?> updateProfile(
     return ResponseEntity.ok(
             authService.updateProfile(principal.getName(), request));
 }
+@GetMapping("/test")
+public String test() {
+    return "Backend is working!";
+}
 }
