@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://localloop-0857.onrender.com/api',
+  baseURL: 'https://localloop-0857.onrender.com',
   timeout: 10000,
 });
 
