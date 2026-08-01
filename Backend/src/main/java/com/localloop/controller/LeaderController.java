@@ -11,7 +11,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/leader")
+@RequestMapping("/leader")
 @PreAuthorize("hasAuthority('LEADER')")
 @RequiredArgsConstructor
 public class LeaderController {

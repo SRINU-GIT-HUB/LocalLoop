@@ -29,7 +29,7 @@ const Profile = () => {
   });
 
   useEffect(() => {
-    api.get('/api/listings/my-listings')
+    api.get('/listings/my-listings')
       .then(res => setMyListings(Array.isArray(res.data) ? res.data : []))
       .catch(() => toast.error('Failed to load your listings.'))
       .finally(() => setLoading(false));
@@ -38,7 +38,7 @@ const Profile = () => {
   const handleDeleteListing = async (id) => {
     if (!window.confirm('Delete this listing? This cannot be undone.')) return;
     try {
-      await api.delete(`/api/listings/${id}`);
+      await api.delete(`/listings/${id}`);
       setMyListings(prev => prev.filter(l => l.id !== id));
       toast.success('Listing deleted.');
     } catch {
@@ -49,7 +49,7 @@ const Profile = () => {
   const handleProviderSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post('/api/provider/apply', {
+      await api.post('/provider/apply', {
         category: providerForm.category,
         description: providerForm.description,
         experience: providerForm.experience,
@@ -65,7 +65,7 @@ const Profile = () => {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.put('/api/auth/profile', editForm);
+      await api.put('/auth/profile', editForm);
       refreshUser(editForm);
       setEditing(false);
       toast.success('Profile updated.');

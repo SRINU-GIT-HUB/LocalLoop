@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     if (!user) { setLoading(false); return; }
     setLoading(true);
-    api.get('/api/listings')
+    api.get('/listings')
       .then(res => setListings(Array.isArray(res.data) ? res.data : []))
       .catch(() => setError('Failed to load the marketplace. Please try again.'))
       .finally(() => setLoading(false));

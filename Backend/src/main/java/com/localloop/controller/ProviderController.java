@@ -8,7 +8,7 @@ import java.security.Principal;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/provider")
+@RequestMapping("/provider")
 @CrossOrigin(origins = "*") // Ensures React is allowed to talk to this endpoint
 @RequiredArgsConstructor
 public class ProviderController {

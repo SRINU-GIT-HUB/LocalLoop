@@ -30,7 +30,7 @@ const AddListing = () => {
     setError('');
     setIsSubmitting(true);
     try {
-      await api.post('/api/listings', {
+      await api.post('/listings', {
         title: form.title,
         description: form.description,
         price: form.price,

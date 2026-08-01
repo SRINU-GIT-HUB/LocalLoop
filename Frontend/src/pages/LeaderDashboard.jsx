@@ -14,7 +14,7 @@ const LeaderDashboard = () => {
 
   const fetchPendingRequests = async () => {
     try {
-      const res = await api.get('/api/leader/provider-requests/pending');
+      const res = await api.get('/leader/provider-requests/pending');
       setPendingRequests(Array.isArray(res.data) ? res.data : []);
     } catch {
       setError('Failed to load pending requests. Ensure you have Leader access.');
@@ -28,7 +28,7 @@ const LeaderDashboard = () => {
   const handleApprove = async (userId) => {
     setProcessing(userId);
     try {
-      await api.put(`/api/leader/provider-requests/${userId}/approve`, {});
+      await api.put(`/leader/provider-requests/${userId}/approve`, {});
       toast.success('Provider approved successfully.');
       fetchPendingRequests();
     } catch {
@@ -46,7 +46,7 @@ const LeaderDashboard = () => {
     setProcessing(userId);
     try {
       await api.put(
-        `/api/leader/provider-requests/${userId}/reject`,
+        `/leader/provider-requests/${userId}/reject`,
         rejectionReason,
         { headers: { 'Content-Type': 'text/plain' } }
       );

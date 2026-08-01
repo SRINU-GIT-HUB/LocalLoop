@@ -29,7 +29,7 @@ const ChatSystem = () => {
   // Fetch conversation list
   const fetchConversations = useCallback(async () => {
     try {
-      const res = await api.get('/api/chat/conversations');
+      const res = await api.get('/chat/conversations');
       setConversations(Array.isArray(res.data) ? res.data : []);
     } catch {
       // silently ignore
@@ -48,7 +48,7 @@ const ChatSystem = () => {
         prev.includes(emailParam) ? prev : [emailParam, ...prev]
       );
     } else if (userIdParam) {
-      api.get(`/api/chat/user-email/${userIdParam}`)
+      api.get(`/chat/user-email/${userIdParam}`)
         .then(res => {
           const email = res.data;
           setRecipientEmail(email);
@@ -102,7 +102,7 @@ const ChatSystem = () => {
   useEffect(() => {
     if (!recipientEmail) { setMessages([]); return; }
     setHistoryLoading(true);
-    api.get(`/api/chat/history/${encodeURIComponent(recipientEmail)}`)
+    api.get(`/chat/history/${encodeURIComponent(recipientEmail)}`)
       .then(res => setMessages(Array.isArray(res.data) ? res.data : []))
       .catch(() => setMessages([]))
       .finally(() => setHistoryLoading(false));
@@ -114,7 +114,7 @@ const ChatSystem = () => {
 
     setSending(true);
     try {
-      const res = await api.post('/api/chat/send', {
+      const res = await api.post('/chat/send', {
         recipientEmail,
         content: messageInput.trim(),
       });

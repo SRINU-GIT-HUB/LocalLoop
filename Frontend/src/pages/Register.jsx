@@ -19,7 +19,7 @@ const Register = () => {
   });
 
   useEffect(() => {
-    api.get('/api/communities')
+    api.get('/communities')
       .then(res => setCommunities(Array.isArray(res.data) ? res.data : []))
       .catch(() => setCommunities([]));
   }, []);
@@ -68,7 +68,7 @@ const Register = () => {
     };
 
     try {
-      const res = await api.post('/api/auth/register', payload);
+      const res = await api.post('/auth/register', payload);
       // Correctly update AuthContext so user is logged in immediately
       login(res.data.user, res.data.token);
       navigate('/');

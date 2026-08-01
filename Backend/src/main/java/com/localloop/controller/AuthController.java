@@ -17,7 +17,7 @@ import com.localloop.service.UserService;
 
 import java.util.Map;
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
     private final UserService userService;
@@ -42,7 +42,7 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/api/provider/apply")
+    @PostMapping("/provider/apply")
     public ResponseEntity<?> applyAsProvider(@RequestBody Map<String, String> payload, Principal principal) {
         userService.applyForProvider(principal.getName(), payload.get("category"), payload.get("description"), Integer.parseInt(payload.get("experience")));
         return ResponseEntity.ok().build();

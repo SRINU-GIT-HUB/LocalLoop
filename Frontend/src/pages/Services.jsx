@@ -12,7 +12,7 @@ const Services = () => {
   const [category, setCategory] = useState('All');
 
   useEffect(() => {
-    api.get('/api/services')
+    api.get('/services')
       .then(res => setServices(Array.isArray(res.data) ? res.data : []))
       .catch(() => setError('Failed to load services. Please try again.'))
       .finally(() => setLoading(false));
