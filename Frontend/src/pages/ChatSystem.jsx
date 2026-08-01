@@ -67,9 +67,9 @@ const ChatSystem = () => {
 
   // WebSocket setup (once)
   useEffect(() => {
-    const socket = new SockJS('http://localhost:5000/ws');
+    const socket = new SockJS('https://localloop-0857.onrender.com/ws');
     const client = new Client({
-      webSocketFactory: () => socket,
+      webSocketFactory: () => socket, 
       connectHeaders: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       reconnectDelay: 5000,
       onConnect: () => {
