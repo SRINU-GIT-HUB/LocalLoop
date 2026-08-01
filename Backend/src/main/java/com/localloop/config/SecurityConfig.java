@@ -62,6 +62,7 @@ public class SecurityConfig {
     // 3. Define the exact CORS rules
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
+        System.out.println("Cors Loaded");
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173","https://localloop-frontend-3vu9.onrender.com","https://localloop.onrender.com")); // Allow React frontend
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
