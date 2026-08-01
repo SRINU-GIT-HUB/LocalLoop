@@ -43,23 +43,13 @@ public class ListingController {
     }
     @GetMapping
 public ResponseEntity<List<ListingResponse>> getAllListings(Authentication authentication) {
-
-    System.out.println("Controller reached");
-
-    if (authentication == null) {
-        System.out.println("Authentication is NULL");
-    } else {
-        System.out.println("Authentication name = " + authentication.getName());
-        System.out.println("Authorities = " + authentication.getAuthorities());
-    }
-
     Long userId = getCurrentUserId(authentication);
     return ResponseEntity.ok(listingService.getAllActiveListings(userId));
 }
 @PostMapping
     public ResponseEntity<ListingResponse> createListing(
             Authentication authentication,
-            @RequestBody ListingRequest request) { // <-- Back to simple JSON!
+            @RequestBody ListingRequest request) { 
         
         Long userId = getCurrentUserId(authentication);
         
@@ -71,7 +61,7 @@ public ResponseEntity<List<ListingResponse>> getAllListings(Authentication authe
     public ResponseEntity<?> updateListing(
             @PathVariable Long id, 
             Authentication authentication,
-            @RequestBody ListingRequest request) { // <-- Back to simple JSON!
+            @RequestBody ListingRequest request) { 
         try {
             Long userId = getCurrentUserId(authentication);
             return ResponseEntity.ok(listingService.updateListing(id, userId, request));
